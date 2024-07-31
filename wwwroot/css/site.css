@@ -1,0 +1,76 @@
+html,
+body {
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
+.home-main {
+  width: 100%;
+  height: 100%;
+}
+.table-area {
+  display: flex;
+  padding: 10px;
+  width: 90%;
+  overflow-x: auto;
+  flex-direction: column;
+}
+
+.users-table {
+  border-collapse: collapse;
+}
+
+.tb-column {
+  padding: 3px;
+}
+
+.users-table th  {
+  border: 1px solid #ddd;
+  padding: 8px;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.users-table tr td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.users-table tr .person-area {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: flex-start !important;
+  align-items: center;
+}
+
+.person-area img {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+
+}
+
+.users-table tr:hover {
+  background-color: rgba(211, 211, 211, .3);
+  transition: all 200ms ease-in-out;
+}
+
+.headerRow {
+  background-color: lightgray;
+}
+
+.td-center {
+  align-items: center;
+  justify-content: center;
+}
