@@ -1,6 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HumanResourceDictionary.MVC", "HumanResourceDictionary.MVC.csproj", "{0B4A53B7-544A-4923-B490-08A03F9AE7FA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HumanResourceDictionary.MVC", "presentation/HumanResourceDictionary.MVC.csproj", "{0B4A53B7-544A-4923-B490-08A03F9AE7FA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "application", "application", "{408FDCC1-FA4B-40A8-847F-43B83946A2AE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "presentation", "presentation", "{970B0BEE-F5D9-4695-893D-28E22DF3A7C7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "persistance", "persistance", "{C8F7A045-6B88-4833-843C-0DEA7A8667A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HumanResourceDictionary.Infrastructure", "Persistance\HumanResourceDictionary.Infrastructure\HumanResourceDictionary.Infrastructure.csproj", "{D756627F-5A69-40BB-80B8-7D1DAA7190C5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,5 +20,13 @@ Global
 		{0B4A53B7-544A-4923-B490-08A03F9AE7FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B4A53B7-544A-4923-B490-08A03F9AE7FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0B4A53B7-544A-4923-B490-08A03F9AE7FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D756627F-5A69-40BB-80B8-7D1DAA7190C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D756627F-5A69-40BB-80B8-7D1DAA7190C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D756627F-5A69-40BB-80B8-7D1DAA7190C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D756627F-5A69-40BB-80B8-7D1DAA7190C5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0B4A53B7-544A-4923-B490-08A03F9AE7FA} = {970B0BEE-F5D9-4695-893D-28E22DF3A7C7}
+		{D756627F-5A69-40BB-80B8-7D1DAA7190C5} = {C8F7A045-6B88-4833-843C-0DEA7A8667A0}
 	EndGlobalSection
 EndGlobal
