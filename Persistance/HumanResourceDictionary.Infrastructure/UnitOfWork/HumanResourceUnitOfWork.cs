@@ -1,31 +1,38 @@
 using HumanResourceDictionary.Infrastructure.Data;
+using HumanResourceDictionary.Infrastructure.Entities;
+using HumanResourceDictionary.Infrastructure.Generic;
 using HumanResourceDictionary.Infrastructure.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace HumanResourceDictionary.Infrastructure.UnitOfWork;
 
-public class HumanResourceUnitOfWork(HumanResourceDbContext context) : IHumanResourceUnitOfWork
+public class HumanResourceUnitOfWork : IHumanResourceUnitOfWork, IAsyncDisposable
 {
-    private readonly Dictionary<Type, object> _repositories = new();
+    private readonly HumanResourceDbContext _context;
 
-    public IRepository<T> Repository<T>() where T : class
+    public HumanResourceUnitOfWork(HumanResourceDbContext context)
     {
-        if (_repositories.ContainsKey(typeof(T)))
-        {
-            return (IRepository<T>)_repositories[typeof(T)];
-        }
-
-        var repositoryType = typeof(Repository<>);
-        var repositoryInstance =
-            (IRepository<T>)Activator.CreateInstance(repositoryType!.MakeGenericType(typeof(T)), context)!;
-        _repositories.Add(typeof(T), repositoryInstance!);
-        return repositoryInstance!;
+        _context = context;
+        Genders = new GenericContextRepository<Gender>(_context);
+        LocalizedGenderNames = new GenericContextRepository<LocalizedGenderNames>(_context);
+        Cities = new GenericContextRepository<City>(_context);
+        LocalizedCityNames = new GenericContextRepository<LocalizedCityName>(_context);
+        Users = new GenericContextRepository<User>(_context);
     }
 
-    public async Task<int> CompleteAsync()
+    public void Dispose()
     {
-        return await context.SaveChangesAsync();
+        _context.Dispose();
     }
 
-    void IDisposable.Dispose() => context.Dispose();
+    public async ValueTask DisposeAsync()
+    {
+        await _context.DisposeAsync();
+    }
+
+    public IRepository<Gender> Genders { get; private set; }
+    public IRepository<LocalizedGenderNames> LocalizedGenderNames { get; private set; }
+    public IRepository<City> Cities { get; private set; }
+    public IRepository<LocalizedCityName> LocalizedCityNames { get; private set; }
+    public IRepository<User> Users { get; private set; }
 }

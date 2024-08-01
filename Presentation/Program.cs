@@ -1,3 +1,5 @@
+using HumanResourceDictionary.Application;
+using HumanResourceDictionary.Infrastructure;
 using HumanResourceDictionary.Infrastructure.UnitOfWork;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,6 +11,9 @@ builder.Configuration.AddJsonFile("appsettings.json", optional: true, reloadOnCh
 builder.Services.AddDbContext<HumanResourceDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 // Add services to the container.
+
+builder.Services.RegisterInfrastructureServices();
+builder.Services.RegisterApplicationServices();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();

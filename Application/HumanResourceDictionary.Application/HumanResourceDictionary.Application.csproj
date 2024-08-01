@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <LangVersion>12</LangVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Persistance\HumanResourceDictionary.Domain\HumanResourceDictionary.Domain.csproj" />
+      <ProjectReference Include="..\..\Persistance\HumanResourceDictionary.Infrastructure\HumanResourceDictionary.Infrastructure.csproj" />
+      <ProjectReference Include="..\HumanResourceDictionary.Shared\HumanResourceDictionary.Shared.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Services\Dictionaries\City\" />
+    </ItemGroup>
+
+</Project>

@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using HumanResourceDictionary.Application.Services.Dictionaries.Gender;
 using Microsoft.AspNetCore.Mvc;
 using HumanResourceDictionary.MVC.Models;
 
@@ -8,13 +9,17 @@ public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
 
-    public HomeController(ILogger<HomeController> logger)
+    private readonly IGenderServices _genderServices;
+
+    public HomeController(ILogger<HomeController> logger, IGenderServices genderServices)
     {
         _logger = logger;
+        _genderServices = genderServices;
     }
 
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
+        var genders = await _genderServices.GetGenders(default);
         return View();
     }
 
