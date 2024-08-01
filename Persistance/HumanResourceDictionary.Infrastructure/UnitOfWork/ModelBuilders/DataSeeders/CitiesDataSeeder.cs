@@ -9,13 +9,13 @@ public record CitySeedData
     public List<LocalizedCityName> LocalizedNames { get; set; }
 }
 
-public class CitiesDataSeeder
+public static class CitiesDataSeeder
 {
     public static void Seed(ModelBuilder modelBuilder)
     {
         var citySeedData = new List<CitySeedData>
         {
-            new CitySeedData
+            new()
             {
                 City = new City { Id = 1, Code = "TBS" },
                 LocalizedNames =
@@ -24,7 +24,7 @@ public class CitiesDataSeeder
                     new LocalizedCityName { Id = 2, CityId = 1, LanguageCode = "EN", Name = "Tbilisi" }
                 ]
             },
-            new CitySeedData
+            new()
             {
                 City = new City { Id = 2, Code = "KUT" },
                 LocalizedNames =
@@ -33,7 +33,7 @@ public class CitiesDataSeeder
                     new LocalizedCityName { Id = 4, CityId = 2, LanguageCode = "EN", Name = "Kutaisi" }
                 ]
             },
-            new CitySeedData
+            new()
             {
                 City = new City { Id = 3, Code = "BAT" },
                 LocalizedNames =
@@ -42,7 +42,7 @@ public class CitiesDataSeeder
                     new LocalizedCityName { Id = 6, CityId = 3, LanguageCode = "EN", Name = "Batumi" }
                 ]
             },
-            new CitySeedData
+            new()
             {
                 City = new City { Id = 4, Code = "RUS" },
                 LocalizedNames =
@@ -51,7 +51,7 @@ public class CitiesDataSeeder
                     new LocalizedCityName { Id = 8, CityId = 4, LanguageCode = "EN", Name = "Rustavi" }
                 ]
             },
-            new CitySeedData
+            new()
             {
                 City = new City { Id = 5, Code = "ZUG" },
                 LocalizedNames =
@@ -60,7 +60,7 @@ public class CitiesDataSeeder
                     new LocalizedCityName { Id = 10, CityId = 5, LanguageCode = "EN", Name = "Zugdidi" }
                 ]
             },
-            new CitySeedData
+            new()
             {
                 City = new City { Id = 6, Code = "GOR" },
                 LocalizedNames =
@@ -69,7 +69,7 @@ public class CitiesDataSeeder
                     new LocalizedCityName { Id = 12, CityId = 6, LanguageCode = "EN", Name = "Gori" }
                 ]
             },
-            new CitySeedData
+            new()
             {
                 City = new City { Id = 7, Code = "TEL" },
                 LocalizedNames =
@@ -78,7 +78,7 @@ public class CitiesDataSeeder
                     new LocalizedCityName { Id = 14, CityId = 7, LanguageCode = "EN", Name = "Telavi" }
                 ]
             },
-            new CitySeedData
+            new()
             {
                 City = new City { Id = 8, Code = "POT" },
                 LocalizedNames =
@@ -87,7 +87,7 @@ public class CitiesDataSeeder
                     new LocalizedCityName { Id = 16, CityId = 8, LanguageCode = "EN", Name = "Poti" }
                 ]
             },
-            new CitySeedData
+            new()
             {
                 City = new City { Id = 9, Code = "OZA" },
                 LocalizedNames =
@@ -96,7 +96,7 @@ public class CitiesDataSeeder
                     new LocalizedCityName { Id = 18, CityId = 9, LanguageCode = "EN", Name = "Ozurgeti" }
                 ]
             },
-            new CitySeedData
+            new()
             {
                 City = new City { Id = 10, Code = "SAM" },
                 LocalizedNames =
@@ -105,7 +105,7 @@ public class CitiesDataSeeder
                     new LocalizedCityName { Id = 20, CityId = 10, LanguageCode = "EN", Name = "Samtredia" }
                 ]
             },
-            new CitySeedData
+            new()
             {
                 City = new City { Id = 11, Code = "AKH" },
                 LocalizedNames =
@@ -114,7 +114,7 @@ public class CitiesDataSeeder
                     new LocalizedCityName { Id = 22, CityId = 11, LanguageCode = "EN", Name = "Akhaltsikhe" }
                 ]
             },
-            new CitySeedData
+            new()
             {
                 City = new City { Id = 12, Code = "KHA" },
                 LocalizedNames =

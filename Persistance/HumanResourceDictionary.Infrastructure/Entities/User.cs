@@ -16,4 +16,7 @@ public class User
 
     public Gender Gender { get; set; } = default!;
     public City City { get; set; } = default!;
+    
+    public ICollection<PhoneNumberDictionary>? PhoneNumberDictionary { get; set; } = new List<PhoneNumberDictionary>();
+ 
 }

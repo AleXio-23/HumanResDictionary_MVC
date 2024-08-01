@@ -29,10 +29,16 @@ public partial class HumanResourceDbContext : DbContext
         modelBuilder.ApplyConfiguration(new GenderModelBuilder());
         modelBuilder.ApplyConfiguration(new LocalizedGenderNamesModelBuilder());
         modelBuilder.ApplyConfiguration(new UserModelBuilder());
+        modelBuilder.ApplyConfiguration(new RelationTypesModelBuilder());
+        modelBuilder.ApplyConfiguration(new LocalizedRelationTypeNamesModelBuilder());
+        modelBuilder.ApplyConfiguration(new PhoneNumberTypesModelBuilder());
+        modelBuilder.ApplyConfiguration(new LocalizedPhoneNumberTypeNamesModelBuilder());
+        modelBuilder.ApplyConfiguration(new PhoneNumberDictionaryModelBuilder());
 
 
         CitiesDataSeeder.Seed(modelBuilder);
         GenderDataSeeder.Seed(modelBuilder);
+        RelationTypesDataSeeder.Seed(modelBuilder);
 
 
         OnModelCreatingPartial(modelBuilder);

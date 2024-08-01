@@ -17,8 +17,4 @@
       <ProjectReference Include="..\HumanResourceDictionary.Shared\HumanResourceDictionary.Shared.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Services\Dictionaries\City\" />
-    </ItemGroup>
-
 </Project>
