@@ -9,4 +9,5 @@ public interface IHumanResourceUnitOfWork : IDisposable
      IRepository<City> Cities { get; }
      IRepository<LocalizedCityName> LocalizedCityNames { get; }
      IRepository<User> Users { get; }
+     IRepository<PhoneNumberDictionary> PhoneNumbersDictionary { get; }
 }

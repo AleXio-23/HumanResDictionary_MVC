@@ -58,8 +58,9 @@ public static class RelationTypesDataSeeder
                 ]
             }
         };
-        
-        modelBuilder.Entity<City>().HasData(seedData.Select(x => x.RelationType).ToArray());
-        modelBuilder.Entity<LocalizedCityName>().HasData(seedData.SelectMany(x => x.LocalizedRelationTypeNames).ToArray());
+
+        modelBuilder.Entity<RelationTypes>().HasData(seedData.Select(x => x.RelationType).ToArray());
+        modelBuilder.Entity<LocalizedRelationTypeNames>()
+            .HasData(seedData.SelectMany(x => x.LocalizedRelationTypeNames).ToArray());
     }
 }

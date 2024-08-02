@@ -1,5 +1,6 @@
 using HumanResourceDictionary.Application.Services.Dictionaries.City;
 using HumanResourceDictionary.Application.Services.Dictionaries.Gender;
+using HumanResourceDictionary.Application.Services.Users.AddUser;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace HumanResourceDictionary.Application;
@@ -10,6 +11,7 @@ public static class ApplicationServices
     {
         services.AddScoped<IGenderServices, GenderServices>();
         services.AddScoped<ICityServices, CityServices>();
+        services.AddScoped<IAddUserService, AddUserService>();
         return services;
     }
 }

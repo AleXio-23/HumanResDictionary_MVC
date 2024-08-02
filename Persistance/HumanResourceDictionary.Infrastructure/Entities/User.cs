@@ -1,3 +1,5 @@
+using FluentValidation;
+
 namespace HumanResourceDictionary.Infrastructure.Entities;
 
 public class User
@@ -16,7 +18,10 @@ public class User
 
     public Gender Gender { get; set; } = default!;
     public City City { get; set; } = default!;
-    
+
     public ICollection<PhoneNumberDictionary>? PhoneNumberDictionary { get; set; } = new List<PhoneNumberDictionary>();
- 
+    public ICollection<UserRelations>? UserRelations { get; set; } = new List<UserRelations>();
+    public ICollection<UserRelations>? RelatedUserRelations { get; set; } = new List<UserRelations>();
+    
+    
 }

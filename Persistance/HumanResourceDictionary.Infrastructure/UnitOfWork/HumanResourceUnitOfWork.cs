@@ -18,6 +18,7 @@ public class HumanResourceUnitOfWork : IHumanResourceUnitOfWork, IAsyncDisposabl
         Cities = new GenericContextRepository<City>(_context);
         LocalizedCityNames = new GenericContextRepository<LocalizedCityName>(_context);
         Users = new GenericContextRepository<User>(_context);
+        PhoneNumbersDictionary = new GenericContextRepository<PhoneNumberDictionary>(_context);
     }
 
     public void Dispose()
@@ -34,5 +35,6 @@ public class HumanResourceUnitOfWork : IHumanResourceUnitOfWork, IAsyncDisposabl
     public IRepository<LocalizedGenderNames> LocalizedGenderNames { get; private set; }
     public IRepository<City> Cities { get; private set; }
     public IRepository<LocalizedCityName> LocalizedCityNames { get; private set; }
-    public IRepository<User> Users { get; private set; }
+    public IRepository<User> Users { get; }
+    public IRepository<PhoneNumberDictionary> PhoneNumbersDictionary { get; }
 }
