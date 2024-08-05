@@ -1,76 +1,439 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
 html,
 body {
-  width: 100%;
-  height: 100vh;
-  margin: 0;
-  padding: 0;
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
 }
 
-
-.container {
-  display: flex;
-  flex-direction: row;
+.main-panel {
+    width: 100%;
+    height: 100%;
 }
 
-.home-main {
-  width: 100%;
-  height: 100%;
-}
 .table-area {
-  display: flex;
-  padding: 10px;
-  width: 90%;
-  overflow-x: auto;
-  flex-direction: column;
+    display: flex;
+    padding: 10px;
+    width: 90%;
+    overflow-x: auto;
+    flex-direction: column;
 }
 
 .users-table {
-  border-collapse: collapse;
+    border-collapse: collapse;
 }
 
 .tb-column {
-  padding: 3px;
+    padding: 3px;
 }
 
-.users-table th  {
-  border: 1px solid #ddd;
-  padding: 8px;
-  align-items: center !important;
-  justify-content: center !important;
+
+.users-table tr th {
+    border: 1px solid #ddd;
+    padding: 8px;
+
 }
 
 .users-table tr td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  align-items: center !important;
-  justify-content: center !important;
+    border: 1px solid #ddd;
+    padding: 8px;
 }
 
 .users-table tr .person-area {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-  justify-content: flex-start !important;
-  align-items: center;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: flex-start !important;
+    align-items: center;
 }
 
-.person-area img {
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
+.person-area .avatar {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
+}
+
+
+.person-area .avatar img,
+.person-area .avatar span {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%; 
+    border: 1px solid rgb(139, 255, 245);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.person-area .avatar span {
+    font-weight: bold;
 }
 
 .users-table tr:hover {
-  background-color: rgba(211, 211, 211, .3);
-  transition: all 200ms ease-in-out;
+    background-color: rgba(211, 211, 211, .15);
+    transition: all 200ms ease-in-out;
 }
 
-.headerRow {
-  background-color: lightgray;
+
+.users-table .table-tr,
+.users-table .table-tr:hover {
+    background-color: rgba(211, 211, 211, .4);
 }
+
 
 .td-center {
-  align-items: center;
-  justify-content: center;
+    width: 100%;
+    height: 100%;
+    display: flex;
+
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.footer-area {
+    border: 1px solid #ddd;
+    border-top: none;
+    background-color: rgba(211, 211, 211, .4);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
+
+.footer-area .out-and-select {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin: 5px;
+}
+
+.pageing-area {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    height: 25px;
+}
+
+.pageing-area .before,
+.pageing-area .after {
+    border: 1px solid #ddd;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.paging-number-area .paging-numbers {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+
+.paging-number-area {
+    display: flex;
+    flex-direction: row;
+}
+
+.paging-numbers {
+    border: 1px solid lightgray;
+    width: 25px;
+}
+
+.paging-numbers:hover,
+.paging-number-active {
+    background-color: rgba(211, 211, 211, .5);
+    border: 1px solid rgb(126, 88, 126);
+    transition: all 200ms ease-in-out;
+}
+
+
+.afterGapBtn {
+
+    overflow: hidden;
+    transition: all 0.6s;
+}
+
+.afterGapBtn .text {
+    display: inline-block;
+    transition: opacity 0.6s;
+}
+
+.afterGapBtn .text .default {
+    opacity: 1;
+    display: block;
+}
+
+.afterGapBtn .text .hover {
+    opacity: 0;
+    display: none;
+}
+
+.out-of-count {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+
+/* http://meyerweb.com/eric/tools/css/reset/ v2.0 | 20110126 License: none (public domain) */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+*,
+*:after,
+*:before {
+    box-sizing: border-box;
+}
+
+.select-wrapper {
+    position: relative;
+    user-select: none;
+    width: 60px;
+    height: 24px;
+}
+
+
+.add-user-btn {
+    border: 1px solid green;
+    width: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 40% !important;
+    /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding-bottom: 5px !important;
+    margin-bottom: 5px !important;
+}
+
+/* asdasd */
+
+input[type=text],
+select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+
+.inline-pair-flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.diffline-pair-flex {
+    display: flex;
+    flex-direction: column;
+    width: 48%;
 }

@@ -11,10 +11,56 @@
 </head>
 <body>
 <header>
-    Header
+    <div class="add-user-btn" id="myBtn">
+        <span>Add User</span>
+    </div>
+
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <span>Add New User</span>
+                <span class="close">&times;</span>
+            </div>
+            @Html.AntiForgeryToken()
+            <form id="userForm">
+                <div class="inline-pair-flex ">
+                    <div class="diffline-pair-flex ">
+                        <label for="fname">First Name</label>
+                        <input type="text" id="fname" name="firstname" placeholder="Your name..">
+                    </div>
+                    <div class="diffline-pair-flex ">
+                        <label for="lname">Last Name</label>
+                        <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+                    </div>
+                </div>
+                <label for="lname">Personal Number</label>
+                <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+
+                <div class="inline-pair-flex ">
+                    <div class="diffline-pair-flex ">
+                        <label for="gender">Gender</label>
+                        <select id="genderSelector" name="gender">
+                        </select>
+                    </div>
+                    <div class="diffline-pair-flex ">
+                        <label for="city">City</label>
+                        <select id="citySelector" name="city">
+
+                        </select>
+                    </div>
+                </div>
+
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+
+    </div>
 </header>
-<div  >
-    <main  >
+<div >
+    <main >
         @RenderBody()
     </main>
 </div>
@@ -23,6 +69,79 @@
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>
+<script src="~/js/modal.js" asp-append-version="true"></script>
+<script src="~/js/paging.js" asp-append-version="true"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('userForm');
+        const antiForgeryToken = document.querySelector('input[name="__RequestVerificationToken"]').value;
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const formData = new FormData(form);
+            const user = {};
+            formData.forEach((value, key) => {
+                user[key] = value;
+            });
+
+            fetch('@Url.Action("Create", "Home")', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'RequestVerificationToken': antiForgeryToken
+                },
+                body: JSON.stringify(user)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert("User created successfully!");
+                    } else {
+                        alert("Error creating user. Please check your inputs.");
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        });
+
+        const citiesSelector = document.getElementById('citySelector');
+        const gendersSelector = document.getElementById('genderSelector');
+
+        function fillCitiesSelector() {
+            fetch('/Home/GetCities')
+                .then(response => response.json())
+                .then(cities => {
+                    citiesSelector.innerHTML = '<option value="">Select a city</option>';
+                    cities.forEach(city => {
+                        const option = document.createElement('option');
+                        option.value = city.id;
+                        option.textContent = city.localizedNames[0].name;
+                        citiesSelector.appendChild(option);
+                    });
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        function fillGendersSelector() {
+            fetch('/Home/GetGenders')
+                .then(response => response.json())
+                .then(genders => {
+                    gendersSelector.innerHTML = '<option value="">Select a gender</option>';
+                    genders.forEach(gender => {
+                        const option = document.createElement('option');
+                        option.value = gender.id;
+                        option.textContent = gender.localizedGenderNames[0].name;
+                        gendersSelector.appendChild(option);
+                    });
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        fillCitiesSelector();
+        fillGendersSelector();
+    });
+</script>
 @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

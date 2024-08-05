@@ -4,7 +4,7 @@ using HumanResourceDictionary.Domain.DictionaryModels;
 
 namespace HumanResourceDictionary.Domain.UserModels;
 
-public class UserDto
+public record UserDto
 {
     public int Id { get; set; }
     public string Firstname { get; set; } = default!;
@@ -17,8 +17,8 @@ public class UserDto
 
     public string? AvatarUrl { get; set; }
 
-    public GenderDto Gender { get; set; } = default!;
-    public CityDto City { get; set; } = default!;
+    public GenderDto? Gender { get; set; } = null;
+    public CityDto? City { get; set; } = null;
 }
 
 public class UserValidator : AbstractValidator<UserDto>

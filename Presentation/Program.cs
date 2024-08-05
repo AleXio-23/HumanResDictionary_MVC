@@ -1,4 +1,6 @@
+using FluentValidation.AspNetCore;
 using HumanResourceDictionary.Application;
+using HumanResourceDictionary.Domain.UserModels;
 using HumanResourceDictionary.Infrastructure;
 using HumanResourceDictionary.Infrastructure.UnitOfWork;
 using Microsoft.EntityFrameworkCore;
@@ -14,7 +16,8 @@ builder.Services.AddDbContext<HumanResourceDbContext>(options =>
 
 builder.Services.RegisterInfrastructureServices();
 builder.Services.RegisterApplicationServices();
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews()
+    .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<UserValidator>());
 
 var app = builder.Build();
 

@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<HumanResourceDictionary.Domain.UserModels.UserDto>
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -25,8 +27,15 @@
             </tr>
 
         </table>
-        <div class="table-footer">
-            <i class="bi bi-info-circle"></i>
-        </div>
+   
     </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const persons = @Html.Raw(Json.Serialize(Model)); 
+        console.log(persons)
+        populateTable(persons);
+    });
+
+</script>

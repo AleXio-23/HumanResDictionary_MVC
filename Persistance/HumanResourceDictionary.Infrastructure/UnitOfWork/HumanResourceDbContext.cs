@@ -34,6 +34,7 @@ public partial class HumanResourceDbContext : DbContext
         modelBuilder.ApplyConfiguration(new PhoneNumberTypesModelBuilder());
         modelBuilder.ApplyConfiguration(new LocalizedPhoneNumberTypeNamesModelBuilder());
         modelBuilder.ApplyConfiguration(new PhoneNumberDictionaryModelBuilder());
+        modelBuilder.ApplyConfiguration(new UserRelationsModelBuilder());
 
 
         CitiesDataSeeder.Seed(modelBuilder);

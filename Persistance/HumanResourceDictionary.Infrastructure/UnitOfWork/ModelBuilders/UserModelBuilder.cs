@@ -11,7 +11,7 @@ public class UserModelBuilder : IEntityTypeConfiguration<User>
         entity.ToTable("Users", "ums");
         entity.HasKey(x => x.Id);
         entity.Property(x => x.Firstname).HasColumnType("NVARCHAR(50)").IsRequired();
-        entity.Property(x => x.Lastname).HasColumnType("VARCHAR(50)").IsRequired();
+        entity.Property(x => x.Lastname).HasColumnType("NVARCHAR(50)").IsRequired();
         entity.Property(x => x.PersonalNumber).HasColumnType("VARCHAR(11)").IsRequired();
         entity.Property(x => x.BirthDate).IsRequired();
         entity.Property(x => x.BirthDate).IsRequired();
@@ -22,5 +22,7 @@ public class UserModelBuilder : IEntityTypeConfiguration<User>
         entity.HasOne(x => x.City)
             .WithMany(x => x.Users)
             .HasForeignKey(x => x.CityId);
+        
+        
     }
 }

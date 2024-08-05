@@ -4,6 +4,7 @@ using HumanResourceDictionary.Infrastructure.UnitOfWork;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HumanResourceDictionary.Infrastructure.Migrations
 {
     [DbContext(typeof(HumanResourceDbContext))]
-    partial class HumanResourceDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240802215459_AddRelationsStruct")]
+    partial class AddRelationsStruct
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -599,7 +602,7 @@ namespace HumanResourceDictionary.Infrastructure.Migrations
 
                     b.Property<string>("Lastname")
                         .IsRequired()
-                        .HasColumnType("NVARCHAR(50)");
+                        .HasColumnType("VARCHAR(50)");
 
                     b.Property<string>("PersonalNumber")
                         .IsRequired()
@@ -729,7 +732,7 @@ namespace HumanResourceDictionary.Infrastructure.Migrations
                     b.HasOne("HumanResourceDictionary.Infrastructure.Entities.User", "RelatedUser")
                         .WithMany("RelatedUserRelations")
                         .HasForeignKey("RelatedUserId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("HumanResourceDictionary.Infrastructure.Entities.RelationTypes", "RelationType")
@@ -741,7 +744,7 @@ namespace HumanResourceDictionary.Infrastructure.Migrations
                     b.HasOne("HumanResourceDictionary.Infrastructure.Entities.User", "User")
                         .WithMany("UserRelations")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("RelatedUser");

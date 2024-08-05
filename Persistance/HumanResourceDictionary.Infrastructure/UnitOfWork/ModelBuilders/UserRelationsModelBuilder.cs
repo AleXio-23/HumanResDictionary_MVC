@@ -13,9 +13,12 @@ public class UserRelationsModelBuilder: IEntityTypeConfiguration<UserRelations>
         
         entity.HasOne(x => x.User)
             .WithMany(x => x.UserRelations)
-            .HasForeignKey(x => x.UserId);
+            .HasForeignKey(x => x.UserId)
+            .OnDelete(DeleteBehavior.Restrict);
+        
         entity.HasOne(x => x.RelatedUser)
             .WithMany(x => x.RelatedUserRelations)
-            .HasForeignKey(x => x.RelatedUserId);
+            .HasForeignKey(x => x.RelatedUserId)
+            .OnDelete(DeleteBehavior.Restrict);
     }
 }
