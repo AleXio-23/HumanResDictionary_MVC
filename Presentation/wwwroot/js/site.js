@@ -1,6 +1,4 @@
-﻿
-
-function populateTable(persons) {
+﻿function populateTable(persons) {
     const tableContentArea = document.getElementById('usersTable');
     persons.forEach(person => {
         const row = document.createElement('tr');
@@ -24,7 +22,7 @@ function populateTable(persons) {
                    
                     <td>${person?.gender?.localizedGenderNames[0]?.name ?? "----"}</td>
                     <td>${person.personalNumber}</td>
-                    <td>${person.birthDate}</td>
+                    <td>${formatDateToDDMMYYYY(person.birthDate)} </td>
                     <td>${person.city.localizedNames[0].name}</td>
                     <td>${person.phoneNumber}</td>
                     <td>${person.relatedPersonsCount}</td> 
@@ -37,6 +35,26 @@ function populateTable(persons) {
 
         tableContentArea.appendChild(row);
     });
+}
+
+function formatDateToDDMMYYYY(dateString) {
+    // Convert the dateString to a Date object
+    const date = new Date(dateString);
+
+    // Check if the conversion was successful
+    if (isNaN(date.getTime())) {
+        // Handle invalid date
+        console.error('Invalid date:', dateString);
+        return '';
+    }
+
+    // Extract day, month, and year
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+    const year = date.getFullYear();
+
+    // Return formatted date string
+    return `${day}/${month}/${year}`;
 }
 
 function displayAvatarOrPlaceholder(avatarUrl, firstname, lastname) {

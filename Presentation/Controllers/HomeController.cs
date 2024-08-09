@@ -10,6 +10,14 @@ using HumanResourceDictionary.MVC.Models;
 
 namespace HumanResourceDictionary.MVC.Controllers;
 
+/// <summary>
+/// 
+/// </summary>
+/// <param name="logger"></param>
+/// <param name="genderServices"></param>
+/// <param name="cityServices"></param>
+/// <param name="getUsersService"></param>
+/// <param name="addUserService"></param>
 public class HomeController(
     ILogger<HomeController> logger,
     IGenderServices genderServices,
@@ -18,23 +26,27 @@ public class HomeController(
     IAddUserService addUserService)
     : Controller
 {
+    /// <summary>
+    /// Home page, get users list
+    /// </summary>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
     public async Task<IActionResult> Index(CancellationToken cancellationToken)
-    { 
-        
+    {
         var users = await getUsersService.Execute(cancellationToken);
         return View(users.Data);
     }
 
-    [HttpPost]
-  
-    public async Task<IActionResult> Create([FromBody] UserDto user)
+    [HttpPost("Home/Create")]
+    public async Task<IActionResult> Create([FromBody] UserDto user, CancellationToken cancellationToken)
     {
-        if (ModelState.IsValid)
+        if (!ModelState.IsValid) return BadRequest(ModelState);
+        var requestModel = new NewUserAddModel()
         {
-            return Ok(new { success = true });
-        }
-
-        return BadRequest(ModelState);
+            User = user
+        };
+        await addUserService.Execute(requestModel, cancellationToken);
+        return Ok(new { success = true });
     }
 
     [HttpGet("Home/GetCities")]
@@ -44,7 +56,6 @@ public class HomeController(
         return Json(cities.Data);
     }
 
-   
 
     [HttpPost("Home/AddnewUser")]
     public async Task<IActionResult> AddnewUser(NewUserAddModel request, CancellationToken cancellationToken)
