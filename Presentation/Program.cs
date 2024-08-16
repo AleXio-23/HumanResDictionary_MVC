@@ -3,6 +3,7 @@ using HumanResourceDictionary.Application;
 using HumanResourceDictionary.Domain.UserModels;
 using HumanResourceDictionary.Infrastructure;
 using HumanResourceDictionary.Infrastructure.UnitOfWork;
+using HumanResourceDictionary.Shared.Middlewares;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
@@ -34,7 +35,7 @@ builder.Services.AddSwaggerGen(c =>
     c.IncludeXmlComments(xmlPath);
 });
 var app = builder.Build();
-
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {

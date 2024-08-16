@@ -48,6 +48,7 @@ public class UserValidator : AbstractValidator<UserDto>
 
         // დაბადების თარიღი (თარიღი, სავალდებულო, მინიმუმ 18 წლის)
         RuleFor(x => x.BirthDate)
+            .NotEmpty().WithMessage("საჭიროა")
             .Must(IsAtLeast18YearsOld)
             .WithMessage("Person must be at least 18 years old.");
     }
